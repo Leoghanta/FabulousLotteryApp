@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="FabulousLotteryApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FabulousLotteryApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Combo box to select from a list of users -->
+        <ComboBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"
+                  Width="250" Margin="10" ItemsSource="{x:Bind game.UsersList}"
+                  DisplayMemberPath="Name" x:Name="comboboxPlayerSelection"/>
+        
+        <!-- Button for new player -->
+        <Button Grid.Row="0" Grid.Column="6" Content="New Player" 
+                HorizontalAlignment="Center" Background="Gray"
+                CornerRadius="5" Width="90" Click="NewPlayerButtonClicked"/>
+
+        <!-- List of tickets stored -->
+        <ListView Grid.Row="0" Grid.Column="7" Grid.RowSpan="4" Width="200"
+                  ItemsSource="{x:Bind game.TicketList}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Margin="0, 10, 0, 10">
+                        <Border BorderThickness="2" BorderBrush="White">
+                            <TextBlock Text="{Binding Ticketview}" FontSize="12"/>
+                        </Border>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+        
+        <!-- Text Boxes for numbers -->
+        <TextBox x:Name="textboxBall1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Background="LightGray" Foreground="Black" FontSize="20" Margin="5"/>
+        <TextBox x:Name="textboxBall2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Background="LightGray" Foreground="Black" FontSize="20" Margin="5"/>
+        <TextBox x:Name="textboxBall3" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Background="LightGray" Foreground="Black" FontSize="20" Margin="5"/>
+        <TextBox x:Name="textboxBall4" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" Background="LightGray" Foreground="Black" FontSize="20" Margin="5"/>
+        <TextBox x:Name="textboxBall5" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" Background="LightGray" Foreground="Black" FontSize="20" Margin="5"/>
+        <TextBox x:Name="textboxBall6" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" Background="LightGray" Foreground="Black" FontSize="20" Margin="5"/>
+        
+        <!-- generate ticket button -->
+        <Button Grid.Row="1" Grid.Column="6" Content="Generate" 
+                HorizontalAlignment="Center" Background="Gray"
+                CornerRadius="5" Width="90" Click="GenerateTicketButtonClicked" />
+        
+        <!-- Lucky Dip button -->
+        <Button Grid.Row="2" Grid.Column="6" Content="Lucky Dip" 
+        HorizontalAlignment="Center" Background="Gray"
+        CornerRadius="5" Width="90" Click="LuckyDipButtonClicked" />
+
+        <!-- Reset button -->
+        <Button Grid.Row="3" Grid.Column="6" Content="Reset" 
+                HorizontalAlignment="Center" Background="Gray"
+                CornerRadius="5" Width="90" Click="ResetButtonClicked" />
+
+        <!-- Draw Button -->
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                Content="DRAW" HorizontalAlignment="Center" 
+                Background="Red" Height="70" Width="70" CornerRadius="50" Click="DrawButtonClicked"/>
+
+        <!-- Exit button -->
+        <Button Grid.Row="4" Grid.Column="7" Content="Exit" Margin="10"
+        HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Gray"
+        CornerRadius="5" Width="90" Click="ExitButtonClicked" />
+
+    </Grid>
+    
+</Page>
